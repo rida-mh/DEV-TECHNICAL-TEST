@@ -17,7 +17,7 @@ class Controller extends APIController
         LocalFileDBContext $dbContext,
     ) {
 
-        $book = new Book(1, "Le problème à trois corps");
+        $book = new Book("Le problème à trois corps");
 
         $dbContext->persist($book);
         $dbContext->flush();

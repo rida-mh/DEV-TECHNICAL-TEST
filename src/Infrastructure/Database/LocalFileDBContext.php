@@ -73,6 +73,17 @@ class LocalFileDBContext
             $this->data[$fullClassName] = [];
         }
 
+        $reflectionClass = new ReflectionClass($entity);
+
+        if ($reflectionClass->hasProperty('id')) {
+            $idProperty = $reflectionClass->getProperty('id');
+            $idProperty->setAccessible(true);
+
+            if (!$idProperty->getValue($entity)) {
+                $idProperty->setValue($entity, uniqid());
+            }
+        }
+
         $this->data[$fullClassName][] = $entity;
     }
 

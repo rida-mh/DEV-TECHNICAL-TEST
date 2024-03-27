@@ -8,6 +8,13 @@ use ReflectionProperty;
 
 abstract class BaseEntity implements JsonSerializable
 {
+    protected ?string $id = null;
+
+    public function getID(): string
+    {
+        return $this->id;
+    }
+
     public function jsonSerialize(): mixed
     {
         $reflection = new ReflectionObject($this);
