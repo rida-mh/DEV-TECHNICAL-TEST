@@ -1,4 +1,9 @@
 {
+    "autoload": {
+        "psr-4": {
+            "EneraTechTest\\": "src"
+        }
+    },
     "require": {
         "slim/slim": "^4.13",
         "php-di/php-di": "^7.0"
