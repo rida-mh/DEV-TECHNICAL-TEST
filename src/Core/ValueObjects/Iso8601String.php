@@ -14,7 +14,7 @@ class Iso8601String implements JsonSerializable
     {
         if (is_int($date)) {
             $this->set(date('Y-m-d\TH:i:s\Z', $date));
-        } else if ($date instanceof DateTime) {
+        } elseif ($date instanceof DateTime) {
             $this->set($date->format('Y-m-d\TH:i:s\Z'));
         } else {
             $this->set($date);
