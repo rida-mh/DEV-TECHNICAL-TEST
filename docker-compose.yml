@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+
+  backoffice:
+    container_name: enera-technical-test
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 8000:80
+    volumes:
+      - '.:/var/www/html'
