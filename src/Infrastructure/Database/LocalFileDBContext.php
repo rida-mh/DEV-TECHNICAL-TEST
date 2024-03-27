@@ -3,9 +3,11 @@
 namespace EneraTechTest\Infrastructure\Database;
 
 use ReflectionClass;
-use EneraTechTest\Core\Entities\BaseEntity;
 
-class LocalFileDBContext
+use EneraTechTest\Core\Entities\BaseEntity;
+use EneraTechTest\Infrastructure\DataAccess\DBContext;
+
+class LocalFileDBContext implements DBContext
 {
     private string $storagePath = __DIR__ . '/Data';
     private array $data = [];
@@ -87,7 +89,7 @@ class LocalFileDBContext
         $this->data[$fullClassName][] = $entity;
     }
 
-    public function get(string $entityClassName): array
+    public function listAll(string $entityClassName): array
     {
 
         if (!isset($this->data[$entityClassName])) {

@@ -10,7 +10,7 @@ use EneraTechTest\Adapters\API\APIPresenter;
 use EneraTechTest\Core\Entities\Book;
 use EneraTechTest\Core\ValueObjects\Iso8601String;
 
-use EneraTechTest\Infrastructure\Database\LocalFileDBContext;
+use EneraTechTest\Infrastructure\DataAccess\DBContext;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -20,7 +20,7 @@ class Controller extends APIController
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,
-        LocalFileDBContext $dbContext,
+        DBContext $dbContext,
     ) {
 
         $book = new Book("Le problème à trois corps", new Iso8601String(new DateTime()));

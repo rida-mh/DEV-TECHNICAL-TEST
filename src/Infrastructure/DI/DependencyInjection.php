@@ -9,10 +9,10 @@ class DependencyInjection
 {
     private Container $container;
 
-    public function __construct(array $definitionsPaths = [])
+    public function __construct()
     {
         $containerBuilder = new ContainerBuilder();
-        $this->container = $this->addDefinitions($containerBuilder, $definitionsPaths)->build();
+        $this->container = $this->addDefinitions($containerBuilder)->build();
     }
 
     public function getContainer(): Container
@@ -20,11 +20,9 @@ class DependencyInjection
         return $this->container;
     }
 
-    private function addDefinitions(ContainerBuilder $containerBuilder, array $definitionsPaths): ContainerBuilder
+    private function addDefinitions(ContainerBuilder $containerBuilder): ContainerBuilder
     {
-        foreach ($definitionsPaths as $definitionPath) {
-            $containerBuilder->addDefinitions($definitionPath);
-        }
+        $containerBuilder->addDefinitions(__DIR__ . '/DependencyDefinitions.php');
 
         return $containerBuilder;
     }
