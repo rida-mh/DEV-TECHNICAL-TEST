@@ -2,10 +2,16 @@
 
 namespace EneraTechTest\Adapters\API\PostBook;
 
+use DateTime;
+
 use EneraTechTest\Adapters\API\APIController;
 use EneraTechTest\Adapters\API\APIPresenter;
+
 use EneraTechTest\Core\Entities\Book;
+use EneraTechTest\Core\ValueObjects\Iso8601String;
+
 use EneraTechTest\Infrastructure\Database\LocalFileDBContext;
+
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -17,7 +23,7 @@ class Controller extends APIController
         LocalFileDBContext $dbContext,
     ) {
 
-        $book = new Book("Le problème à trois corps");
+        $book = new Book("Le problème à trois corps", new Iso8601String(new DateTime()));
 
         $dbContext->persist($book);
         $dbContext->flush();
