@@ -12,5 +12,5 @@ interface DBContext
 
     public function listAll(string $entityName): array;
 
-    public function findByID(string $entityName, string $id): ?BaseEntity;
+    public function findByID(string $entityName, string $id);
 }

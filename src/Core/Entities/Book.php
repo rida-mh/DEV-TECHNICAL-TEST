@@ -19,4 +19,9 @@ class Book extends BaseEntity
     {
         return new Iso8601String($this->releaseDate);
     }
+
+    public function updateTitle(string $newTitle): void
+    {
+        $this->title = $newTitle;
+    }
 }
