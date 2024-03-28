@@ -5,8 +5,11 @@ namespace EneraTechTest\Core\ValueObjects;
 use DateTime;
 use Exception;
 use JsonSerializable;
+use Stringable;
 
-class Iso8601String implements JsonSerializable
+class Iso8601String implements
+    JsonSerializable,
+    Stringable
 {
     private string $iso8601String;
 
@@ -30,7 +33,7 @@ class Iso8601String implements JsonSerializable
         $this->iso8601String = $dateTimeString;
     }
 
-    public function __string(): string
+    public function __toString(): string
     {
         return $this->iso8601String;
     }
@@ -49,6 +52,6 @@ class Iso8601String implements JsonSerializable
 
     public function jsonSerialize(): mixed
     {
-        return $this->__string();
+        return $this->__toString();
     }
 }
