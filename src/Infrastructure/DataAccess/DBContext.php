@@ -11,4 +11,6 @@ interface DBContext
     public function persist(BaseEntity $entity): void;
 
     public function listAll(string $entityName): array;
+
+    public function findByID(string $entityName, string $id): ?BaseEntity;
 }

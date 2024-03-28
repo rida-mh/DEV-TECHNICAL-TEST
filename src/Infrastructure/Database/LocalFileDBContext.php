@@ -30,8 +30,8 @@ class LocalFileDBContext implements DBContext
             $entitiesArray = json_decode($jsonData, true);
 
             $entities = [];
-            foreach ($entitiesArray as $entityData) {
-                $entities[] = $this->jsonDeserialize($entityData, $fullClassName);
+            foreach ($entitiesArray as $entityId => $entityData) {
+                $entities[$entityId] = $this->jsonDeserialize($entityData, $fullClassName);
             }
 
             $this->data[$fullClassName] = $entities;
@@ -77,16 +77,14 @@ class LocalFileDBContext implements DBContext
 
         $reflectionClass = new ReflectionClass($entity);
 
-        if ($reflectionClass->hasProperty('id')) {
-            $idProperty = $reflectionClass->getProperty('id');
-            $idProperty->setAccessible(true);
+        $idProperty = $reflectionClass->getProperty('id');
+        $idProperty->setAccessible(true);
 
-            if (!$idProperty->getValue($entity)) {
-                $idProperty->setValue($entity, uniqid());
-            }
+        if (!$idProperty->getValue($entity)) {
+            $idProperty->setValue($entity, uniqid());
         }
 
-        $this->data[$fullClassName][] = $entity;
+        $this->data[$fullClassName][$idProperty->getValue($entity)] = $entity;
     }
 
     public function listAll(string $entityClassName): array
@@ -96,6 +94,11 @@ class LocalFileDBContext implements DBContext
             return [];
         }
 
-        return $this->data[$entityClassName];
+        return array_values($this->data[$entityClassName]);
+    }
+
+    public function findByID(string $entityName, string $id): ?BaseEntity
+    {
+        return $this->data[$entityName][$id] ?? null;
     }
 }
