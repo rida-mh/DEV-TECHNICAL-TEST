@@ -17,8 +17,15 @@ class Controller extends APIController
         ServerRequestInterface $request,
         ResponseInterface $response,
         DBContext $dbContext,
+        $bookID = null,
     ) {
-        $presenter = new APIPresenter(200, $dbContext->listAll(Book::class));
+        $presenter = null;
+
+        if (!is_null($bookID)) {
+            $presenter = new APIPresenter(200, ["book" => $dbContext->findByID(Book::class, $bookID)]);
+        } else {
+            $presenter = new APIPresenter(200, $dbContext->listAll(Book::class));
+        }
 
         return $this->render($response, $presenter);
     }

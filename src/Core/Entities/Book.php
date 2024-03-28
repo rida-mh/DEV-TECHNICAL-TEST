@@ -12,7 +12,7 @@ class Book extends BaseEntity
         private string $title,
         Iso8601String $releaseDate,
     ) {
-        $this->releaseDate = $releaseDate->__string();
+        $this->releaseDate = $releaseDate;
     }
 
     public function getReleaseDate(): Iso8601String
