@@ -10,9 +10,9 @@ Les consignes à respecter sont détaillées dans ci-dessous.
 
 ### Mise en contexte
 
-Vous êtes développeur sur un nouveau projet commander par une bibliothèque afin de gérer ses livres. L'objectif du projet est de fournir une petite plateforme Web permettant de facilement enregistrer les livres présents dans la bibliothèque. Le client a insisté sur le fait que le produit devrait pouvoir évoluer facilement en fonction des nouveaux besoins.
+Vous êtes développeur sur un nouveau projet commandé par une bibliothèque afin de gérer ses livres. L'objectif du projet est de fournir une petite plateforme Web permettant de facilement enregistrer les livres présents dans la bibliothèque. Le client a insisté sur le fait que le produit devrait pouvoir évoluer facilement en fonction des nouveaux besoins.
 
-Ce repository contient le résultat de la toute première itération du projet au cours de laquelle vous avez commencer à dessiner une architecture.
+Ce repository contient le résultat de la toute première itération du projet au cours de laquelle vous avez commencé à dessiner une architecture.
 
 ### Tâches à réaliser
 
@@ -28,7 +28,7 @@ Vous trouverez des [informations sur les code ISBN ici.](https://www.bnf.fr/fr/i
 
 Il est temps d'intégrer les premiers éléments d'interface graphique dans l'application.
 
-Le but de cette tâche est de créer une interface graphique qui permet de lister les libres déjà ajoutés, et d'en ajouter des nouveaux.
+Le but de cette tâche est de créer une interface graphique qui permet de lister les livres déjà ajoutés, et d'en ajouter des nouveaux.
 
 ### Contraintes et remarques générales
 
@@ -36,7 +36,7 @@ Le candidat est libre d'effectuer les tâches de la manière qu'il souhaite, ave
 
 Par ailleurs, à la suite du test technique, un échange est prévu pour discuter des choix qui ont été fait. Il est clair que les problématiques présentées ici sont très simples, mais il est demandé au candidat de comprendre l'esprit du test à partir du code existant fourni.
 
-Enfin, l'absence d'authentification et de base de données est voulue pour simplifier la mise en place du test, il n'est pas demandé au candidat "corriger" cela.
+Enfin, l'absence d'authentification et de base de données est voulue pour simplifier la mise en place du test, il n'est pas demandé au candidat de "corriger" cela.
 
 ## Installation de l'application
 
@@ -59,7 +59,7 @@ Une fois le repository cloné, voici les étapes à suivre pour lancer l'applica
 `chmod -R 755 /var/www/html/src/Infrastructure/Database/Data`
 
 
-L'application est executer sur le port 8000 du localhost. De base, deux API sont configurées :
+L'application est executée sur le port 8000 du localhost. De base, deux API sont configurées :
 
 `[GET] http://localhost:8000/api/books`
 
