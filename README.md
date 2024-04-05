@@ -32,7 +32,7 @@ Le but de cette tâche est de créer une interface graphique qui permet de liste
 
 ### Contraintes et remarques générales
 
-Le candidat est libre d'effectuer les tâches de la manière qu'il souhaite, avec pour unique contrainte que tout le code doit pouvoir être executer via le docker déjà présent dans le repository.
+Le candidat est libre d'effectuer les tâches de la manière qu'il souhaite, avec pour unique contrainte que tout le code doit pouvoir être executé via le docker déjà présent dans le repository.
 
 Par ailleurs, à la suite du test technique, un échange est prévu pour discuter des choix qui ont été fait. Il est clair que les problématiques présentées ici sont très simples, mais il est demandé au candidat de comprendre l'esprit du test à partir du code existant fourni.
 
