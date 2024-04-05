@@ -2,16 +2,12 @@
 
 namespace EneraTechTest\Adapters\API\PostBook;
 
-use DateTime;
-
 use EneraTechTest\Adapters\API\APIController;
-use EneraTechTest\Adapters\API\APIPresenter;
-
-use EneraTechTest\Core\Entities\Book;
+use EneraTechTest\Core\UseCases\AddNewBook\AddNewBook;
+use EneraTechTest\Core\UseCases\AddNewBook\AddNewBookInputPort;
 use EneraTechTest\Core\ValueObjects\Iso8601String;
 
-use EneraTechTest\Infrastructure\DataAccess\DBContext;
-
+use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -20,18 +16,34 @@ class Controller extends APIController
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,
-        DBContext $dbContext,
+        AddNewBook $useCase,
     ) {
+        $presenter = new Presenter();
 
-        $book = new Book("Le problème à trois corps", new Iso8601String(new DateTime()));
+        try {
 
-        $dbContext->persist($book);
-        $dbContext->flush();
+            $input = $this->tryGetUseCaseInput($request->getParsedBody()["book"] ?? []);
+        } catch (\Throwable $th) {
 
-        $presenter = new APIPresenter(201, [
-            "book" => $book
-        ]);
+            return $this->renderBadRequest($response, ["error" => ["message" => $th->getMessage()]]);
+        }
+
+        $useCase->execute($input, $presenter);
 
         return $this->render($response, $presenter);
+    }
+
+    private function tryGetUseCaseInput(array $book): AddNewBookInputPort
+    {
+        if (!$title = $book["title"] ?? null) {
+            throw new Exception("`title` is mandatory");
+        }
+
+        $releaseDate = new Iso8601String($book["releaseDate"] ?? '');
+
+        return new AddNewBookInputPort([
+            "title" => $title,
+            "releaseDate" => $releaseDate,
+        ]);
     }
 }

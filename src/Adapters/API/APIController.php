@@ -19,4 +19,9 @@ abstract class APIController
 
         return $response->withHeader('Content-Type', 'application/json');
     }
+
+    protected function renderBadRequest(ResponseInterface $response, $viewModel = []): ResponseInterface
+    {
+        return $this->render($response, new APIPresenter(400, $viewModel));
+    }
 }
