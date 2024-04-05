@@ -1,3 +1,4 @@
 /vendor
-/src/Infrastructure/Database/Data
+/src/Infrastructure/Database/Data/*
+!/src/Infrastructure/Database/Data/init_books.json
 .phpunit.result.cache
