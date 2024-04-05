@@ -13,6 +13,5 @@ class Routes
         $app->get('/api/books', APIGetBooksController::class);
         $app->post('/api/books', Controller::class);
         $app->get('/api/books/{bookID}', APIGetBooksController::class);
-        $app->patch('/api/books/{bookID}', APIPatchController::class);
     }
 }
