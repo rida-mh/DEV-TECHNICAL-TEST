@@ -101,4 +101,15 @@ class LocalFileDBContext implements DBContext
     {
         return $this->data[$entityName][$id] ?? null;
     }
+
+    public function isbnExists(string $isbn)
+    {
+        foreach ($this->data as $books) {
+            foreach ($books as $book) {
+                if ($book->getIsbn() === $isbn) {
+                    return true;
+                }
+            }
+        }
+    }
 }

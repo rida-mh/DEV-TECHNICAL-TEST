@@ -5,6 +5,7 @@ namespace EneraTechTest\Infrastructure\Slim;
 use EneraTechTest\Adapters\API\GetBooks\Controller as APIGetBooksController;
 use EneraTechTest\Adapters\API\PatchBook\Controller as APIPatchController;
 use EneraTechTest\Adapters\API\PostBook\Controller as Controller;
+use EneraTechTest\Adapters\Web\IndexController;
 
 class Routes
 {
@@ -13,5 +14,6 @@ class Routes
         $app->get('/api/books', APIGetBooksController::class);
         $app->post('/api/books', Controller::class);
         $app->get('/api/books/{bookID}', APIGetBooksController::class);
+        $app->get('/', IndexController::class);
     }
 }

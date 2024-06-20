@@ -16,6 +16,7 @@ class AddNewBook
     {
         $book = new Book(
             $input->bookInformations["title"],
+            $input->bookInformations["isbn"],
             $input->bookInformations["releaseDate"]
         );
 
